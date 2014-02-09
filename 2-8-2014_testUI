@@ -1,0 +1,180 @@
+Load Rocket & Run Default Simulation
+Test Case 1: No *.ork File Given
+usage: rockettalk.py [-h] [-s index] [--fc IP address] [--ts Time Step]
+                     filename.ork
+rockettalk.py: error: too few arguments
+
+Test Case 2: Specified *.ork File Not Found
+Caught the IOError:
+     [Errno 2] No such file or directory: 'badFileName.ork'
+Verify the path to the .ork file
+
+Test Case 3: Specified *.ork File Does not Contain Simulations
+loading rocket from noSimulations.ork
+Number of Simulations in file: 0
+Traceback (most recent call last):
+  File "rockettalk.py", line 51, in <module>
+    RocketLoop.RocketLoop(args.filename, args.sim_index, args.fc_IP, args.time_step)
+  File "/home/roland/git/RocketTalk/RocketLoop.py", line 25, in RocketLoop
+    OpenRocket.StartSimulation()
+  File "/home/roland/git/RocketTalk/OpenRocketInterface.py", line 287, in StartSimulation
+    return self.apiInstance.StartSimulation()  # returns int
+jpype._jexception.RuntimeExceptionPyRaisable: java.lang.NullPointerException
+
+Test Case 4: File Found and Contains Simulations
+loading rocket from asimple.ork
+Number of Simulations in file: 5
+Getting Simulation Conditions for: Simulation 1
+status of rocket is LOADED
+Number of branches in simulation: 1
+Starting Simulation
+Traceback (most recent call last):
+  File "rockettalk.py", line 51, in <module>
+    RocketLoop.RocketLoop(args.filename, args.sim_index, args.fc_IP, args.time_step)
+  File "/home/roland/git/RocketTalk/RocketLoop.py", line 55, in RocketLoop
+    adis.send_message(p)
+  File "/home/roland/git/RocketTalk/RocketPacket.py", line 71, in send_message
+    packet = ADIS_Message.pack(*p)
+ValueError: cannot convert float NaN to integer
+
+Specify Host
+Test Case 1: Invalid Host Given
+Traceback (most recent call last):
+  File "rockettalk.py", line 42, in <module>
+    args.fc_IP = socket.gethostbyname(args.fc_IP)
+socket.gaierror: [Errno -5] No address associated with hostname
+
+Test Case 2: Valid Host Given
+loading rocket from asimple.ork
+Number of Simulations in file: 5
+Getting Simulation Conditions for: Simulation 1
+status of rocket is LOADED
+Number of branches in simulation: 1
+Starting Simulation
+Traceback (most recent call last):
+  File "rockettalk.py", line 51, in <module>
+    RocketLoop.RocketLoop(args.filename, args.sim_index, args.fc_IP, args.time_step)
+  File "/home/roland/git/RocketTalk/RocketLoop.py", line 55, in RocketLoop
+    adis.send_message(p)
+  File "/home/roland/git/RocketTalk/RocketPacket.py", line 71, in send_message
+    packet = ADIS_Message.pack(*p)
+ValueError: cannot convert float NaN to integer
+
+Test Case 3: No Entry after the --fc Flag
+usage: rockettalk.py [-h] [-s index] [--fc IP address] [--ts Time Step]
+                     filename.ork
+rockettalk.py: error: argument --fc: expected one argument
+
+Run Specified Simulation
+Test Case 1: Input is not an Integer
+usage: rockettalk.py [-h] [-s index] [--fc IP address] [--ts Time Step]
+                     filename.ork
+rockettalk.py: error: argument -s: invalid int value: 'notInteger'
+
+Test Case 2: Input is Less Than One
+Invalid simulation index, enter index > 0 please.
+
+Test Case 3: Invalid Simulation Index Value
+loading rocket from asimple.ork
+Number of Simulations in file: 5
+Traceback (most recent call last):
+  File "rockettalk.py", line 51, in <module>
+    RocketLoop.RocketLoop(args.filename, args.sim_index, args.fc_IP, args.time_step)
+  File "/home/roland/git/RocketTalk/RocketLoop.py", line 25, in RocketLoop
+    OpenRocket.StartSimulation()
+  File "/home/roland/git/RocketTalk/OpenRocketInterface.py", line 287, in StartSimulation
+    return self.apiInstance.StartSimulation()  # returns int
+jpype._jexception.RuntimeExceptionPyRaisable: java.lang.NullPointerException
+
+Test Case 4: Simulation is Outdated
+loading rocket from outDatedSimulation.ork
+Number of Simulations in file: 1
+Getting Simulation Conditions for: Simulation 1
+status of rocket is OUTDATED
+Number of branches in simulation: 1
+Starting Simulation
+Traceback (most recent call last):
+  File "rockettalk.py", line 51, in <module>
+    RocketLoop.RocketLoop(args.filename, args.sim_index, args.fc_IP, args.time_step)
+  File "/home/roland/git/RocketTalk/RocketLoop.py", line 55, in RocketLoop
+    adis.send_message(p)
+  File "/home/roland/git/RocketTalk/RocketPacket.py", line 71, in send_message
+    packet = ADIS_Message.pack(*p)
+ValueError: cannot convert float NaN to integer
+
+Test Case 5: Simulation Found
+Lower Boundary Value
+loading rocket from asimple.ork
+Number of Simulations in file: 5
+Getting Simulation Conditions for: Simulation 1
+status of rocket is LOADED
+Number of branches in simulation: 1
+Starting Simulation
+Traceback (most recent call last):
+  File "rockettalk.py", line 51, in <module>
+    RocketLoop.RocketLoop(args.filename, args.sim_index, args.fc_IP, args.time_step)
+  File "/home/roland/git/RocketTalk/RocketLoop.py", line 55, in RocketLoop
+    adis.send_message(p)
+  File "/home/roland/git/RocketTalk/RocketPacket.py", line 71, in send_message
+    packet = ADIS_Message.pack(*p)
+ValueError: cannot convert float NaN to integer
+
+Upper Boundary Value
+loading rocket from asimple.ork
+Number of Simulations in file: 5
+Getting Simulation Conditions for: Simulation 5
+status of rocket is LOADED
+Number of branches in simulation: 1
+Starting Simulation
+Traceback (most recent call last):
+  File "rockettalk.py", line 51, in <module>
+    RocketLoop.RocketLoop(args.filename, args.sim_index, args.fc_IP, args.time_step)
+  File "/home/roland/git/RocketTalk/RocketLoop.py", line 55, in RocketLoop
+    adis.send_message(p)
+  File "/home/roland/git/RocketTalk/RocketPacket.py", line 71, in send_message
+    packet = ADIS_Message.pack(*p)
+ValueError: cannot convert float NaN to integer
+
+Test Case 6: No Entry after the -s Flag
+usage: rockettalk.py [-h] [-s index] [--fc IP address] [--ts Time Step]
+                     filename.ork
+rockettalk.py: error: argument -s: expected one argument
+
+Specify Time Step
+Test Case 1: No Value Specified
+usage: rockettalk.py [-h] [-s index] [--fc IP address] [--ts Time Step]
+                     filename.ork
+rockettalk.py: error: argument --ts: expected one argument
+
+Test Case 2: Invalid Entry for Time Step
+Invalid time step, enter default or realtime
+
+Test Case 3: Default Entered
+loading rocket from asimple.ork
+Number of Simulations in file: 5
+Getting Simulation Conditions for: Simulation 1
+status of rocket is LOADED
+Number of branches in simulation: 1
+Starting Simulation
+Traceback (most recent call last):
+  File "rockettalk.py", line 51, in <module>
+    RocketLoop.RocketLoop(args.filename, args.sim_index, args.fc_IP, args.time_step)
+  File "/home/roland/git/RocketTalk/RocketLoop.py", line 55, in RocketLoop
+    adis.send_message(p)
+  File "/home/roland/git/RocketTalk/RocketPacket.py", line 71, in send_message
+    packet = ADIS_Message.pack(*p)
+ValueError: cannot convert float NaN to integer
+
+Test Case 4: Realtime Entered
+loading rocket from asimple.ork
+Number of Simulations in file: 5
+Getting Simulation Conditions for: Simulation 1
+status of rocket is LOADED
+Number of branches in simulation: 1
+Starting Simulation
+Traceback (most recent call last):
+  File "rockettalk.py", line 51, in <module>
+    RocketLoop.RocketLoop(args.filename, args.sim_index, args.fc_IP, args.time_step)
+  File "/home/roland/git/RocketTalk/RocketLoop.py", line 98, in RocketLoop
+    sleepTime = sleepTime + stepTimer - time.time()
+UnboundLocalError: local variable 'sleepTime' referenced before assignment
