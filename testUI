@@ -2,60 +2,52 @@
 
 echo "Load Rocket & Run Default Simulation"
 echo "Test Case 1: No *.ork File Given"
-python rockettalk.py
+./rockettalk.py
 echo
 echo "Test Case 2: Specified *.ork File Not Found"
-python rockettalk.py badFileName.ork
+./rockettalk.py badFileName.ork
 echo
 echo "Test Case 3: Specified *.ork File Does not Contain Simulations"
-python rockettalk.py noSimulations.ork
+./rockettalk.py noSimulations.ork
 echo
 echo "Test Case 4: File Found and Contains Simulations"
-python rockettalk.py asimple.ork
+./rockettalk.py asimple.ork
 echo 
 echo "Specify Host"
 echo "Test Case 1: Invalid Host Given"
-python rockettalk.py asimple.ork --fc "badHost"
+./rockettalk.py asimple.ork -fc "badHost"
 echo
 echo "Test Case 2: Valid Host Given"
-python rockettalk.py asimple.ork --fc "localhost"
+./rockettalk.py asimple.ork -fc "localhost"
 echo
-echo "Test Case 3: No Entry after the --fc Flag"
-python rockettalk.py asimple.ork --fc
+echo "Test Case 3: No Entry after the -fc Flag"
+./rockettalk.py asimple.ork -fc
 echo
 echo "Run Specified Simulation"
 echo "Test Case 1: Input is not an Integer"
-python rockettalk.py asimple.ork -s notInteger
+./rockettalk.py asimple.ork -s notInteger
 echo
 echo "Test Case 2: Input is Less Than One"
-python rockettalk.py "asimple.ork" -s 0
+./rockettalk.py "asimple.ork" -s 0
 echo
 echo "Test Case 3: Invalid Simulation Index Value"
-python rockettalk.py "asimple.ork" -s 6
+./rockettalk.py "asimple.ork" -s 6
 echo
 echo "Test Case 4: Simulation is Outdated"
-python rockettalk.py outDatedSimulation.ork
+./rockettalk.py outDatedSimulation.ork
 echo
 echo "Test Case 5: Simulation Found"
 echo "Lower Boundary Value"
-python rockettalk.py asimple.ork -s 1
+./rockettalk.py asimple.ork -s 1
 echo
 echo "Upper Boundary Value"
-python rockettalk.py asimple.ork -s 5
+./rockettalk.py asimple.ork -s 5
 echo
 echo "Test Case 6: No Entry after the -s Flag"
-python rockettalk.py asimple.ork -s
+./rockettalk.py asimple.ork -s
 echo
-echo "Specify Time Step"
-echo "Test Case 1: No Value Specified"
-python rockettalk.py asimple.ork --ts 
+echo "Real Time"
+echo "Test Case 1: Test Real Time Simulation"
+./rockettalk.py asimple.ork -rt
 echo
-echo "Test Case 2: Invalid Entry for Time Step"
-python rockettalk.py asimple.ork --ts invalidEntry
-echo
-echo "Test Case 3: Default Entered"
-python rockettalk.py asimple.ork --ts default
-echo
-echo "Test Case 4: Realtime Entered"
-python rockettalk.py asimple.ork --ts realtime
 
