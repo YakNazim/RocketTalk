@@ -1,0 +1,31 @@
+Test Configuration File
+
+Test Case 2: Check for Existence of the Configuration File
+Not configured.
+
+Copy config.py_dist to config.py and fill in your settings
+
+
+Test Case 3: Check for Existence of OpenRocket Jar File
+Caught the IOError:
+     [Errno 2] No such file or directory: '/bad/path/to/OpenRocket.jar'
+Verify the path to openrocket.jar in config.py
+
+Test Case 4: Confirm Path to JVM
+Caught the IOError:
+     [Errno 2] No such file or directory: '/bad/path/to/libjvm.so'
+Verify the path to the jvm in config.py
+
+Test Case 5: Confirm Version of OR
+Caught the runtime exception:
+      Class net.sf.openrocket.startup.OpenRocketAPI not found
+Ensure that you are using a version of OpenRocket with this class
+
+Test Case 6: Proper Config.py File
+loading rocket from asimple.ork
+Number of Simulations in file: 5
+Getting Simulation Conditions for: Simulation 1
+status of rocket is LOADED
+Successfully loaded rocket simulation data!!!
+Starting simulation
+DONE!

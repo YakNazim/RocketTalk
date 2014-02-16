@@ -1,0 +1,33 @@
+#!/bin/bash
+
+echo 'Test Configuration File'
+echo
+
+mv config.py config.py.bak
+rm config.pyc
+
+echo 'Test Case 2: Check for Existence of the Configuration File'
+./rockettalk.py asimple.ork
+
+echo
+echo 'Test Case 3: Check for Existence of OpenRocket Jar File'
+mv bad_jar_config.py config.py
+./rockettalk.py asimple.ork
+mv config.py bad_jar_config.py
+
+echo
+echo 'Test Case 4: Confirm Path to JVM'
+mv bad_jvm_config.py config.py
+./rockettalk.py asimple.ork
+mv config.py bad_jvm_config.py
+echo
+
+echo 'Test Case 5: Confirm Version of OR'
+mv wrong_or_config.py config.py
+./rockettalk.py asimple.ork
+mv config.py wrong_or_config.py
+
+echo
+echo 'Test Case 6: Proper Config.py File'
+mv config.py.bak config.py
+./rockettalk.py asimple.ork

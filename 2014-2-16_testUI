@@ -1,0 +1,101 @@
+Load Rocket & Run Default Simulation
+Test Case 1: No *.ork File Given
+usage: rockettalk.py [-h] [-s index] [-fc IP address] [-rt] filename.ork
+rockettalk.py: error: too few arguments
+
+Test Case 2: Specified *.ork File Not Found
+Caught the IOError:
+     [Errno 2] No such file or directory: 'badFileName.ork'
+Verify the path to the .ork file
+
+Test Case 3: Specified *.ork File Does not Contain Simulations
+loading rocket from noSimulations.ork
+Number of Simulations in file: 0
+Oops! No simulations available in this file.
+
+Test Case 4: File Found and Contains Simulations
+loading rocket from asimple.ork
+Number of Simulations in file: 5
+Getting Simulation Conditions for: Simulation 1
+status of rocket is LOADED
+Successfully loaded rocket simulation data!!!
+Starting simulation
+DONE!
+
+Specify Host
+Test Case 1: Invalid Host Given
+Traceback (most recent call last):
+  File "./rockettalk.py", line 41, in <module>
+    args.fc_IP = socket.gethostbyname(args.fc_IP)
+socket.gaierror: [Errno -5] No address associated with hostname
+
+Test Case 2: Valid Host Given
+loading rocket from asimple.ork
+Number of Simulations in file: 5
+Getting Simulation Conditions for: Simulation 1
+status of rocket is LOADED
+Successfully loaded rocket simulation data!!!
+Starting simulation
+DONE!
+
+Test Case 3: No Entry after the -fc Flag
+usage: rockettalk.py [-h] [-s index] [-fc IP address] [-rt] filename.ork
+rockettalk.py: error: argument -fc: expected one argument
+
+Run Specified Simulation
+Test Case 1: Input is not an Integer
+usage: rockettalk.py [-h] [-s index] [-fc IP address] [-rt] filename.ork
+rockettalk.py: error: argument -s: invalid int value: 'notInteger'
+
+Test Case 2: Input is Less Than One
+Invalid simulation index, enter index > 0 please.
+
+Test Case 3: Invalid Simulation Index Value
+loading rocket from asimple.ork
+Number of Simulations in file: 5
+Woops! You asked for a simulation not present in this file.
+
+Test Case 4: Simulation is Outdated
+loading rocket from outDatedSimulation.ork
+Number of Simulations in file: 1
+Getting Simulation Conditions for: Simulation 1
+status of rocket is OUTDATED
+Successfully loaded rocket simulation data!!!
+Starting simulation
+DONE!
+
+Test Case 5: Simulation Found
+Lower Boundary Value
+loading rocket from asimple.ork
+Number of Simulations in file: 5
+Getting Simulation Conditions for: Simulation 1
+status of rocket is LOADED
+Successfully loaded rocket simulation data!!!
+Starting simulation
+DONE!
+
+Upper Boundary Value
+loading rocket from asimple.ork
+Number of Simulations in file: 5
+Getting Simulation Conditions for: Simulation 5
+status of rocket is LOADED
+Successfully loaded rocket simulation data!!!
+Starting simulation
+DONE!
+
+Test Case 6: No Entry after the -s Flag
+usage: rockettalk.py [-h] [-s index] [-fc IP address] [-rt] filename.ork
+rockettalk.py: error: argument -s: expected one argument
+
+Real Time
+Test Case 1: Test Real Time Simulation
+loading rocket from asimple.ork
+Number of Simulations in file: 5
+Getting Simulation Conditions for: Simulation 1
+status of rocket is LOADED
+Successfully loaded rocket simulation data!!!
+Starting simulation
+DONE!
+Simulation Time:  15.5947143333
+Actual Time:  13.6782197952
+

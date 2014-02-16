@@ -1,0 +1,12 @@
+Jpype is required to use the OpenRocketInterface class
+Install Jpype using the command:
+  aptitude install python-jpype
+
+Traceback (most recent call last):
+  File "./rockettalk.py", line 44, in <module>
+    RocketLoop.RocketLoop(args.filename, args.sim_index, args.fc_IP, args.time_step)
+  File "/home/roland/git/RocketTalk/RocketLoop.py", line 10, in RocketLoop
+    OpenRocket = API.OpenRocketInterface()
+  File "/home/roland/git/RocketTalk/OpenRocketInterface.py", line 32, in __init__
+    jpype.startJVM(jvm, "-Djava.class.path=%s" % classpath)
+NameError: global name 'jpype' is not defined
